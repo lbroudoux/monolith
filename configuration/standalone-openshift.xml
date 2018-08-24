@@ -136,20 +136,33 @@
         <subsystem xmlns="urn:jboss:domain:bean-validation:1.0"/>
         <subsystem xmlns="urn:jboss:domain:datasources:4.0">
             <datasources>
-                <datasource jndi-name="java:jboss/datasources/CoolstoreDS" pool-name="coolstore_sqlserver-DB">
+                <datasource jndi-name="java:jboss/datasources/CoolstoreDSObjectStore" pool-name="coolstore_postgresqlObjectStorePool" enabled="true">
                     <connection-url>jdbc:sqlserver://sqlserver:1433;DatabaseName=monolith</connection-url>
                     <driver>sqlserver</driver>
                     <security>
-                    <user-name>sa</user-name>
-                    <password>coolstore123</password>
+                        <user-name>sa</user-name>
+                        <password>coolstore123</password>
+                    </security>
+                </datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/CoolstoreDS" pool-name="oolstore_sqlserver-DB">
+                    <xa-datasource-property name="ServerName">sqlserver</xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName"> monolith </xa-datasource-property>
+                    <xa-datasource-property name="SelectMethod"> cursor </xa-datasource-property>
+                    <driver>sqlserver</driver>
+                    <xa-pool>
+                        <is-same-rm-override>false</is-same-rm-override>
+                    </xa-pool>
+                    <security>
+                        <user-name>sa</user-name>
+                        <password>coolstore123</password>
                     </security>
                     <validation>
-                    <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mssql.MSSQLValidConnectionChecker"/>
-                    <validate-on-match>true</validate-on-match>
-                    <background-validation>false</background-validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mssql.MSSQLValidConnectionChecker"/>
+                        <validate-on-match>true</validate-on-match>
+                        <background-validation>false</background-validation>
                     <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.mssql.MSSQLExceptionSorter"/>
                     </validation>
-                </datasource>
+                </xa-datasource>
                 <drivers>
                     <driver name="sqlserver" module="com.microsoft">
                     <xa-datasource-class>com.microsoft.sqlserver.jdbc.SQLServerXADataSource</xa-datasource-class>
