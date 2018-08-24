@@ -136,14 +136,6 @@
         <subsystem xmlns="urn:jboss:domain:bean-validation:1.0"/>
         <subsystem xmlns="urn:jboss:domain:datasources:4.0">
             <datasources>
-                <datasource jndi-name="java:jboss/datasources/CoolstoreDSObjectStore" pool-name="coolstore_sqlserverDSObjectStorePool" enabled="true">
-                    <connection-url>jdbc:sqlserver://sqlserver:1433;DatabaseName=monolith</connection-url>
-                    <driver>sqlserver</driver>
-                    <security>
-                        <user-name>sa</user-name>
-                        <password>coolstore123</password>
-                    </security>
-                </datasource>
                 <xa-datasource jndi-name="java:jboss/datasources/CoolstoreDS" pool-name="coolstore_sqlserver-DB" use-java-context="true" enabled="true">
                     <xa-datasource-property name="ServerName">sqlserver</xa-datasource-property>
                     <xa-datasource-property name="DatabaseName"> monolith </xa-datasource-property>
