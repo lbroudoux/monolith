@@ -136,7 +136,7 @@
         <subsystem xmlns="urn:jboss:domain:bean-validation:1.0"/>
         <subsystem xmlns="urn:jboss:domain:datasources:4.0">
             <datasources>
-                <datasource jndi-name="java:jboss/MSSQLDS" pool-name="MSSQLDS">
+                <datasource jndi-name="java:jboss/datasources/CoolstoreDS" pool-name="CoolstoreDS">
                     <connection-url>jdbc:sqlserver://sqlserver:1433;DatabaseName=monolith</connection-url>
                     <driver>sqlserver</driver>
                     <security>
