@@ -122,12 +122,12 @@
             </formatter>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:batch-jberet:1.0">
-                 <default-job-repository name="coolstore_postgresql-DB"/>
+                 <default-job-repository name="coolstore_sqlserver-DB"/>
             <default-thread-pool name="batch"/>
             <job-repository name="in-memory">
                 <in-memory/>
             </job-repository>
-                 <job-repository name="coolstore_postgresql-DB">      <jdbc data-source="coolstore_postgresql-DB"/>    </job-repository>    <!-- ##JOB_REPOSITORY## -->
+                 <job-repository name="coolstore_sqlserver-DB">      <jdbc data-source="coolstore_sqlserver-DB"/>    </job-repository>    <!-- ##JOB_REPOSITORY## -->
             <thread-pool name="batch">
                 <max-threads count="10"/>
                 <keepalive-time time="30" unit="seconds"/>
@@ -211,7 +211,7 @@
             </passivation-stores>
             <async thread-pool-name="default"/>
             <remote connector-ref="http-remoting-connector" thread-pool-name="default"/>
-                        <timer-service thread-pool-name="default" default-data-store="coolstore_postgresql-DB_ds">                <data-stores>                 <file-data-store name="default-file-store" path="timer-service-data" relative-to="jboss.server.data.dir"/>                    <database-data-store name="coolstore_postgresql-DB_ds" datasource-jndi-name="java:jboss/datasources/CoolstoreDS" database="postgresql" partition="coolstore_postgresql-DB_part"/>        <!-- ##DATASTORES## -->                </data-stores>            </timer-service>
+                        <timer-service thread-pool-name="default" default-data-store="coolstore_sqlserver-DB_ds">                <data-stores>                 <file-data-store name="default-file-store" path="timer-service-data" relative-to="jboss.server.data.dir"/>                    <database-data-store name="coolstore_sqlserver-DB_ds" datasource-jndi-name="java:jboss/datasources/CoolstoreDS" database="sqlserver" partition="coolstore_sqlserver-DB_part"/>        <!-- ##DATASTORES## -->                </data-stores>            </timer-service>
             <thread-pools>
                 <thread-pool name="default">
                     <max-threads count="10"/>
