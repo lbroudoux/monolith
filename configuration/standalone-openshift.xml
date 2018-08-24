@@ -144,7 +144,7 @@
                         <password>coolstore123</password>
                     </security>
                 </datasource>
-                <xa-datasource jndi-name="java:jboss/datasources/CoolstoreDS" pool-name="oolstore_sqlserver-DB">
+                <xa-datasource jndi-name="java:jboss/datasources/CoolstoreDS" pool-name="coolstore_sqlserver-DB">
                     <xa-datasource-property name="ServerName">sqlserver</xa-datasource-property>
                     <xa-datasource-property name="DatabaseName"> monolith </xa-datasource-property>
                     <xa-datasource-property name="SelectMethod"> cursor </xa-datasource-property>
