@@ -144,25 +144,26 @@
                         <password>coolstore123</password>
                     </security>
                 </datasource>
-                <xa-datasource jndi-name="java:jboss/datasources/CoolstoreDS" pool-name="coolstore_sqlserver-DB" use-java-context="true" enabled="true">
-                    <xa-datasource-property name="ServerName">sqlserver</xa-datasource-property>
-                    <xa-datasource-property name="DatabaseName"> monolith </xa-datasource-property>
-                    <xa-datasource-property name="PortNumber"> 1433 </xa-datasource-property>
+                <datasource jndi-name="java:jboss/datasources/CoolstoreDS" pool-name="coolstore_sqlserver-DB" use-java-context="true" enabled="true">
+                    <connection-url>jdbc:sqlserver://sqlserver:1433;DatabaseName=monolith</connection-url>
                     <driver>sqlserver</driver>
                     <security>
                         <user-name>sa</user-name>
                         <password>coolstore123</password>
                     </security>
-                    <validation>
-                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mssql.MSSQLValidConnectionChecker"/>
-                        <validate-on-match>true</validate-on-match>
-                        <background-validation>false</background-validation>
-                    <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.mssql.MSSQLExceptionSorter"/>
-                    </validation>
-                </xa-datasource>
+                </datasource>
                 <drivers>
                     <driver name="sqlserver" module="com.microsoft">
-                    <xa-datasource-class>com.microsoft.sqlserver.jdbc.SQLServerXADataSource</xa-datasource-class>
+                        <xa-datasource-class>com.microsoft.sqlserver.jdbc.SQLServerXADataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="h2" module="com.h2database.h2">
+                        <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="mysql" module="com.mysql">
+                        <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="postgresql" module="org.postgresql">
+                        <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
                     </driver>
                 </drivers>
             </datasources>
@@ -321,6 +322,13 @@
                     <protocol type="pbcast.NAKACK2"/>
                     <protocol type="UNICAST3"/>
                     <protocol type="pbcast.STABLE"/>
+
+                <protocol type="AUTH">
+                    <property name="auth_class">org.jgroups.auth.MD5Token</property>
+                    <property name="token_hash">SHA</property>
+                    <property name="auth_value">openshift123</property>
+                </protocol>
+
                     <protocol type="pbcast.GMS"/>
                     <protocol type="UFC"/>
                     <protocol type="MFC"/>
@@ -337,6 +345,13 @@
                     <protocol type="pbcast.NAKACK2"/>
                     <protocol type="UNICAST3"/>
                     <protocol type="pbcast.STABLE"/>
+
+                <protocol type="AUTH">
+                    <property name="auth_class">org.jgroups.auth.MD5Token</property>
+                    <property name="token_hash">SHA</property>
+                    <property name="auth_value">openshift123</property>
+                </protocol>
+
                     <protocol type="pbcast.GMS"/>
                     <protocol type="MFC"/>
                     <protocol type="FRAG2"/>
