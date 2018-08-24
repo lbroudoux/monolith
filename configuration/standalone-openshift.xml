@@ -144,14 +144,11 @@
                         <password>coolstore123</password>
                     </security>
                 </datasource>
-                <xa-datasource jndi-name="java:jboss/datasources/CoolstoreDS" pool-name="coolstore_sqlserver-DB">
+                <xa-datasource jndi-name="java:jboss/datasources/CoolstoreDS" pool-name="coolstore_sqlserver-DB" use-java-context="true" enabled="true">
                     <xa-datasource-property name="ServerName">sqlserver</xa-datasource-property>
                     <xa-datasource-property name="DatabaseName"> monolith </xa-datasource-property>
-                    <xa-datasource-property name="SelectMethod"> cursor </xa-datasource-property>
+                    <xa-datasource-property name="PortNumber"> 1433 </xa-datasource-property>
                     <driver>sqlserver</driver>
-                    <xa-pool>
-                        <is-same-rm-override>false</is-same-rm-override>
-                    </xa-pool>
                     <security>
                         <user-name>sa</user-name>
                         <password>coolstore123</password>
