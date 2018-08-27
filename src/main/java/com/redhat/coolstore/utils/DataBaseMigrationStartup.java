@@ -31,7 +31,7 @@ public class DataBaseMigrationStartup {
             //serviceName = serviceName.substring(0,serviceName.lastIndexOf("=DB")).toUpperCase().replace("-","_");
             String serviceName = System.getenv("DATASOURCES");
             if (serviceName.indexOf(',') != -1) {
-              serviceName = service.substring(0, serviceName.indexOf(','));
+              serviceName = serviceName.substring(0, serviceName.indexOf(','));
             }
             serviceName = serviceName.toUpperCase().replace("-","_");
             String servicePort = System.getenv(String.format("%s_SERVICE_PORT",serviceName));
