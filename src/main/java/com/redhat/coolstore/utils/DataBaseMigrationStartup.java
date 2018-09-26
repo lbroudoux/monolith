@@ -7,6 +7,8 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.sql.DataSource;
 import javax.inject.Inject;
 import java.util.logging.Level;
@@ -17,6 +19,7 @@ import java.util.logging.Logger;
  */
 @Singleton
 @Startup
+@TransactionManagement(TransactionManagementType.BEAN)
 public class DataBaseMigrationStartup {
 
     @Inject
